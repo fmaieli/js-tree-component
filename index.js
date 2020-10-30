@@ -1,13 +1,16 @@
 // Import stylesheets
 import "./style.css";
 
+// Json Data
+import jsonData from "./jsonDataDummy/tiposDeEnsayo.js";
+
 var $ = require("jquery");
 import "jquery.fancytree";
+import "~/dropdown-tree/js/dropdowntree.js";
 
-// Write Javascript code!
-const appDiv = document.getElementById("app");
-appDiv.innerHTML = `<h1>JS Starter</h1>`;
-
+// Fancy Tree
+const dancytreeDiv = document.getElementById("fancytree-title");
+dancytreeDiv.innerHTML = `<h1>Fancy Tree</h1>`;
 $(function() {
   $("#tree").fancytree({
     checkbox: true,
@@ -36,3 +39,44 @@ $(function() {
     "Fancytree " + $.ui.fancytree.version + " / jQuery " + $.fn.jquery
   );
 });
+
+// Dropdown Tree
+const dropdowntreeDiv = document.getElementById("dropdown-tree-title");
+dropdowntreeDiv.innerHTML = `<h1>Dropdown Tree</h1>`;
+
+var arr = [
+  {
+    title: 1,
+    dataAttrs: [
+      { title: "dataattr1", data: "value1" },
+      { title: "dataattr2", data: "value2" },
+      { title: "dataattr3", data: "value3" }
+    ]
+  },
+  {
+    title: 2,
+    dataAttrs: [
+      { title: "dataattr4", data: "value4" },
+      { title: "dataattr5", data: "value5" },
+      { title: "dataattr6", data: "value6" }
+    ]
+  },
+  {
+    title: 3,
+    dataAttrs: [
+      { title: "dataattr7", data: "value7" },
+      { title: "dataattr8", data: "value8" },
+      { title: "dataattr9", data: "value9" }
+    ]
+  }
+];
+
+var options = {
+  title: "DropDown Tree",
+  data: arr,
+  clickHandler: function(element) {
+    console.log(element);
+  }
+};
+
+$("#firstDropDownTree").DropDownTree(options);
