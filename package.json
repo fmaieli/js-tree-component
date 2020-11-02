@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "jquery": ">=1.9",
-    "jquery.fancytree": "^2.37.0",
-    "jqueryui": "^1.11.1"
+    "jquery.fancytree": "^2.37.0"
   }
 }

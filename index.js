@@ -44,44 +44,102 @@ $(function() {
 const dropdowntreeDiv = document.getElementById("dropdown-tree-title");
 dropdowntreeDiv.innerHTML = `<h1>Dropdown Tree</h1>`;
 
-var arr = [{ Id: 109, title: "GENERICO", data: null }];
+// var arr = [{ id: 109, title: "GENERICO", data: null }];
 
-// var arr = [
-//   {
-//     title: 1,
-//     dataAttrs: [
-//       { title: "dataattr1", data: "value1" },
-//       { title: "dataattr2", data: "value2" },
-//       { title: "dataattr3", data: "value3" }
-//     ]
-//   },
-//   {
-//     title: 2,
-//     dataAttrs: [
-//       { title: "dataattr4", data: "value4" },
-//       { title: "dataattr5", data: "value5" },
-//       { title: "dataattr6", data: "value6" }
-//     ]
-//   },
-//   {
-//     title: 3,
-//     dataAttrs: [
-//       { title: "dataattr7", data: "value7" },
-//       { title: "dataattr8", data: "value8" },
-//       { title: "dataattr9", data: "value9" }
-//     ]
+// // var arr = [
+// //   {
+// //     title: 1,
+// //     dataAttrs: [
+// //       { title: "dataattr1", data: "value1" },
+// //       { title: "dataattr2", data: "value2" },
+// //       { title: "dataattr3", data: "value3" }
+// //     ]
+// //   },
+// //   {
+// //     title: 2,
+// //     dataAttrs: [
+// //       { title: "dataattr4", data: "value4" },
+// //       { title: "dataattr5", data: "value5" },
+// //       { title: "dataattr6", data: "value6" }
+// //     ]
+// //   },
+// //   {
+// //     title: 3,
+// //     dataAttrs: [
+// //       { title: "dataattr7", data: "value7" },
+// //       { title: "dataattr8", data: "value8" },
+// //       { title: "dataattr9", data: "value9" }
+// //     ]
+// //   }
+// // ];
+
+// var options = {
+//   title: "DropDown Tree",
+//   data: arr,
+//   maxHeight: 300,
+//   multiSelect: true,
+//   selectChildren: true,
+//   clickHandler: function(element) {
+//     console.log(element);
 //   }
-// ];
+// };
+
+// $("#firstDropDownTree").DropDownTree(options);
+
+var arr = [
+  {
+    title: 1,
+    dataAttrs: [
+      { title: "dataattr1", data: "value1" },
+      { title: "dataattr2", data: "value2" },
+      { title: "dataattr3", data: "value3" }
+    ]
+  },
+  {
+    title: 2,
+    dataAttrs: [
+      { title: "dataattr4", data: "value4" },
+      { title: "dataattr5", data: "value5" },
+      { title: "dataattr6", data: "value6" }
+    ]
+  },
+  {
+    title: 3,
+    dataAttrs: [
+      { title: "dataattr7", data: "value7" },
+      { title: "dataattr8", data: "value8" },
+      { title: "dataattr9", data: "value9" }
+    ]
+  }
+];
 
 var options = {
-  title: "DropDown Tree",
+  title: "Areas 2",
   data: arr,
-  maxHeight: 300, 
-  multiSelect: true,
-  selectChildren: true,
+  maxHeight: 300,
   clickHandler: function(element) {
+    //gets clicked element parents
+    console.log($(element).GetParents());
+    //element is the clicked element
     console.log(element);
-  }
+    $("#firstDropDownTree").SetTitle(
+      $(element)
+        .find("a")
+        .first()
+        .text()
+    );
+    console.log("Selected Elements", $("#firstDropDownTree").GetSelected());
+  },
+  expandHandler: function(element, expanded) {
+    console.log("expand", element, expanded);
+  },
+  checkHandler: function(element, checked) {
+    console.log("check", element, checked);
+  },
+  closedArrow: '<i class="fa fa-caret-right" aria-hidden="true"></i>',
+  openedArrow: '<i class="fa fa-caret-down" aria-hidden="true"></i>',
+  multiSelect: true,
+  selectChildren: true
 };
 
 $("#firstDropDownTree").DropDownTree(options);
