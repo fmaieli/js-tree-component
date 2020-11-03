@@ -59,7 +59,7 @@ export default class DropdownTreeWrapper {
     }
 
     var newOption = {
-      Id: element.Id,
+      id: element.Id,
       title: element.Nombre,
       data: combinations
     };
