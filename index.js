@@ -20,7 +20,6 @@ var dropdownTreeWrapper = new DropdownTreeWrapper(
   true,
   "firstDropDownTree"
 );
-
 var fancyTreeWrapper = new FancyTreeWrapper("tree");
 
 // Tree Component
@@ -34,24 +33,6 @@ $(document).ready(() => {
   // Fancy Tree
   const fancytreeDiv = document.getElementById("fancytree-title");
   fancytreeDiv.innerHTML = `<h1>Fancy Tree</h1>`;
-  // $(function() {
-  //   $("#tree").fancytree({
-  //     checkbox: true,
-  //     source: [
-  //       { title: "Node 1" },
-  //       { title: "Node 2", key: "id2" },
-  //       {
-  //         title: "Folder 3",
-  //         folder: true,
-  //         children: [{ title: "Node 3.1" }, { title: "Node 3.2" }]
-  //       },
-  //       { title: "Folder 2", folder: true }
-  //     ],
-  //     activate: function(event, data) {
-  //       $("#status").text("Activate: " + data.node);
-  //     }
-  //   });
-  // });
 
   //----------------------------------------------------------------------
 
