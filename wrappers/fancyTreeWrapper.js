@@ -11,19 +11,9 @@ export default class FancyTreeWrapper {
   mapTiposEnsayos(data) {
     var self = this;
     var arrayResult = [];
-    var arrayChildern = [];
 
     $.each(data, function(key, elem) {
       var newOption = self.mapTipoEnsayoToOption(elem);
-      // Si el tipo de ensayo tiene combinaciones entonces se itera por estos
-      if (elem.Combinaciones.length > 0) {
-        $.each(elem.Combinaciones, function(key, elem) {
-          var newChildOption = self.mapTipoEnsayoToOption(elem);
-          arrayChildern.push(newChildOption);
-        });
-        newOption.children = arrayChildern;
-        arrayChildern = [];
-      }
       arrayResult.push(newOption);
     });
 
@@ -44,22 +34,21 @@ export default class FancyTreeWrapper {
     }
 
     var newOption = {
-      Id: element.Id,
       title: element.Nombre,
-      data: combinations
+      key: element.Id,
+      refKey: combinaciones.length > 0 ? "0" : "1",
+      children: combinations
     };
 
     return newOption;
   }
 
-  createTree() {
+  createTree(data) {
     $("#" + this.idComponente).fancytree({
       checkbox: true,
       icons: false,
       selectMode: 3,
-      source: {
-        url: this.url
-      },
+      source: data,
       beforeSelect: function(event, data) {
         $("#Nombre").prop("disabled", false);
         $("#GID").prop("disabled", false);
