@@ -1,4 +1,4 @@
-class DropdownTreeWrapper {
+export default class DropdownTreeWrapper {
   constructor(
     title,
     data,
@@ -13,7 +13,7 @@ class DropdownTreeWrapper {
     this.multiSelect = multiSelect;
     this.selectChildren = selectChildren;
     this.idComponente = idComponente;
-    this.TipoEnsayoService = new TipoEnsayoService();
+    // this.TipoEnsayoService = new TipoEnsayoService();
     this.url = "/GestionEnsayosApi/ListTiposDeEnsayoExistentes";
   }
 

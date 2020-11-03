@@ -1,4 +1,4 @@
-class FancyTreeWrapper {
+export default class FancyTreeWrapper {
   constructor() {}
 
   callTiposEnsayos(empresa, anio, generacion) {}
