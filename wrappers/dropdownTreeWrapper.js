@@ -1,14 +1,8 @@
+var $ = require("jquery");
+
 export default class DropdownTreeWrapper {
-  constructor(
-    title,
-    data,
-    maxHeight,
-    multiSelect,
-    selectChildren,
-    idComponente
-  ) {
+  constructor(title, maxHeight, multiSelect, selectChildren, idComponente) {
     this.title = title;
-    this.dataOptions = data;
     this.maxHeight = maxHeight;
     this.multiSelect = multiSelect;
     this.selectChildren = selectChildren;
@@ -31,21 +25,24 @@ export default class DropdownTreeWrapper {
 
     promiseTiposEnsayosExistentes
       .then(function(result) {
-        self.MapTiposEnsayosToOptions(result);
-        self.CreateDropDownTree();
+        self.mapTiposEnsayosToOptions(result);
+        self.createTree();
       })
       .fail(function(result) {
         showErrorAlert(result.responseText);
       });
   }
 
-  mapTiposEnsayos(result) {
+  mapTiposEnsayos(data) {
     var self = this;
-    self.ResetData();
-    $.each(result, function(key, elem) {
+    var arrayResult = [];
+
+    $.each(data, function(key, elem) {
       var newOption = self.mapTipoEnsayoToOption(elem);
-      self.dataOptions.push(newOption);
+      arrayResult.push(newOption);
     });
+
+    return arrayResult;
   }
 
   mapTipoEnsayoToOption(element) {
@@ -70,20 +67,16 @@ export default class DropdownTreeWrapper {
     return newOption;
   }
 
-  createDropDownTree() {
+  createTree(dataOptions) {
     var self = this;
     var options = {
       title: self.title,
-      data: self.dataOptions,
+      data: dataOptions,
       maxHeight: self.maxHeight,
       multiSelect: self.multiSelect,
       selectChildren: self.selectChildren
     };
     $("#" + self.idComponente).empty();
     $("#" + self.idComponente).DropDownTree(options);
-  }
-
-  resetData() {
-    this.dataOptions = new Array();
   }
 }

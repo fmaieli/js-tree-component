@@ -1,7 +1,11 @@
 export default class TreeComponent {
-  constructor(_treeWrapper) {
+  constructor(_treeWrapper, _data) {
     this.treeWrapper = _treeWrapper;
+    this.data = _data;
   }
 
-  initializeComponent() {}
+  initializeComponent() {
+    var resultData = this.treeWrapper.mapTiposEnsayos(this.data);
+    this.treeWrapper.createTree(resultData);
+  }
 }

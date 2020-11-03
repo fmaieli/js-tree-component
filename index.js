@@ -15,26 +15,25 @@ import jsonData from "./jsonDataDummy/tiposDeEnsayo.js";
 // Wrappers
 var dropdownTreeWrapper = new DropdownTreeWrapper(
   "-seleccione-",
-  jsonData,
   300,
   true,
   true,
   "firstDropDownTree"
 );
 
-var fancyTreeWrapper = new FancyTreeWrapper();
+var fancyTreeWrapper = new FancyTreeWrapper("fancytree-title");
 
 // Tree Component
-var treeComponentDropdown = new TreeComponent(dropdownTreeWrapper);
+var treeComponentDropdown = new TreeComponent(dropdownTreeWrapper, jsonData);
 treeComponentDropdown.initializeComponent();
 
-var treeComponentFancy = new TreeComponent(fancyTreeWrapper);
-treeComponentFancy.initializeComponent();
+// var treeComponentFancy = new TreeComponent(fancyTreeWrapper, jsonData);
+// treeComponentFancy.initializeComponent();
 
 $(document).ready(() => {
   // Fancy Tree
-  const dancytreeDiv = document.getElementById("fancytree-title");
-  dancytreeDiv.innerHTML = `<h1>Fancy Tree</h1>`;
+  const fancytreeDiv = document.getElementById("fancytree-title");
+  fancytreeDiv.innerHTML = `<h1>Fancy Tree</h1>`;
   $(function() {
     $("#tree").fancytree({
       checkbox: true,
@@ -64,26 +63,10 @@ $(document).ready(() => {
     );
   });
 
-  //------------------------------------------------------------
+  //----------------------------------------------------------------------
 
-  // Dropdown Tree
   const dropdowntreeDiv = document.getElementById("dropdown-tree-title");
   dropdowntreeDiv.innerHTML = `<h1>Dropdown Tree</h1>`;
-
-  var arr = [{ id: 109, title: "GENERICO", data: null }];
-
-  var options = {
-    title: "DropDown Tree",
-    data: arr,
-    maxHeight: 300,
-    multiSelect: true,
-    selectChildren: true,
-    clickHandler: function(element) {
-      console.log(element);
-    }
-  };
-
-  $("#firstDropDownTree").DropDownTree(options);
 
   //Inicio - Dejar submenú abierto hasta que se hace click fuera del menú
   jQuery(".dropdown-menu li a").mouseover(function(e) {
