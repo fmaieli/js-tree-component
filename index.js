@@ -18,9 +18,9 @@ var dropdownTreeWrapper = new DropdownTreeWrapper(
   300,
   true,
   true,
-  "firstDropDownTree"
+  "dropdown-tree"
 );
-var fancyTreeWrapper = new FancyTreeWrapper("tree");
+var fancyTreeWrapper = new FancyTreeWrapper("fancytree");
 
 // Tree Component
 var treeComponentDropdown = new TreeComponent(dropdownTreeWrapper, jsonData);
@@ -30,11 +30,8 @@ var treeComponentFancy = new TreeComponent(fancyTreeWrapper, jsonData);
 treeComponentFancy.initializeComponent();
 
 $(document).ready(() => {
-  // Fancy Tree
   const fancytreeDiv = document.getElementById("fancytree-title");
   fancytreeDiv.innerHTML = `<h1>Fancy Tree</h1>`;
-
-  //----------------------------------------------------------------------
 
   const dropdowntreeDiv = document.getElementById("dropdown-tree-title");
   dropdowntreeDiv.innerHTML = `<h1>Dropdown Tree</h1>`;
