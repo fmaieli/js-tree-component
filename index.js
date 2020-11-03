@@ -13,77 +13,10 @@ $(document).ready(() => {
   const dropdowntreeDiv = document.getElementById("dropdown-tree-title");
   dropdowntreeDiv.innerHTML = `<h1>Dropdown Tree</h1>`;
 
-  // var arr = [{ id: 109, title: "GENERICO", data: null }];
-
-  // // var arr = [
-  // //   {
-  // //     title: 1,
-  // //     dataAttrs: [
-  // //       { title: "dataattr1", data: "value1" },
-  // //       { title: "dataattr2", data: "value2" },
-  // //       { title: "dataattr3", data: "value3" }
-  // //     ]
-  // //   },
-  // //   {
-  // //     title: 2,
-  // //     dataAttrs: [
-  // //       { title: "dataattr4", data: "value4" },
-  // //       { title: "dataattr5", data: "value5" },
-  // //       { title: "dataattr6", data: "value6" }
-  // //     ]
-  // //   },
-  // //   {
-  // //     title: 3,
-  // //     dataAttrs: [
-  // //       { title: "dataattr7", data: "value7" },
-  // //       { title: "dataattr8", data: "value8" },
-  // //       { title: "dataattr9", data: "value9" }
-  // //     ]
-  // //   }
-  // // ];
-
-  // var options = {
-  //   title: "DropDown Tree",
-  //   data: arr,
-  //   maxHeight: 300,
-  //   multiSelect: true,
-  //   selectChildren: true,
-  //   clickHandler: function(element) {
-  //     console.log(element);
-  //   }
-  // };
-
-  // $("#firstDropDownTree").DropDownTree(options);
-
-  var arr = [
-    {
-      title: 1,
-      dataAttrs: [
-        { title: "dataattr1", data: "value1" },
-        { title: "dataattr2", data: "value2" },
-        { title: "dataattr3", data: "value3" }
-      ]
-    },
-    {
-      title: 2,
-      dataAttrs: [
-        { title: "dataattr4", data: "value4" },
-        { title: "dataattr5", data: "value5" },
-        { title: "dataattr6", data: "value6" }
-      ]
-    },
-    {
-      title: 3,
-      dataAttrs: [
-        { title: "dataattr7", data: "value7" },
-        { title: "dataattr8", data: "value8" },
-        { title: "dataattr9", data: "value9" }
-      ]
-    }
-  ];
+  var arr = [{ id: 109, title: "GENERICO", data: null }];
 
   var options = {
-    title: "Areas 2",
+    title: "Dropdown Tree",
     data: arr,
     maxHeight: 300,
     clickHandler: function(element) {
@@ -134,7 +67,9 @@ $(document).ready(() => {
       .attr("class")
       .split(/\s+/);
     if (classList.includes("open")) {
-      jQuery(this).parent().removeClass("open");
+      jQuery(this)
+        .parent()
+        .removeClass("open");
     } else {
       jQuery(this)
         .parent()
