@@ -2,7 +2,6 @@
 var $ = require("jquery");
 var jQuery = require("jquery");
 import "jquery.fancytree";
-import "~/dropdown-tree/js/dropdowntree.js";
 import DropdownTreeWrapper from "~/wrappers/dropdownTreeWrapper.js";
 import "./style.css";
 import FancyTreeWrapper from "~/wrappers/fancyTreeWrapper.js";
@@ -35,6 +34,12 @@ $(document).ready(() => {
 
   const dropdowntreeDiv = document.getElementById("dropdown-tree-title");
   dropdowntreeDiv.innerHTML = `<h1>Dropdown Tree</h1>`;
+
+  // ------------------------------Button---------------------------------
+  $("#selectedButton").on("click", function() {
+    var itemsDropdown = treeComponentDropdown.selectedItems();
+    var itemsFancy = treeComponentFancy.selectedItems();
+  });
 
   //Inicio - Dejar submenú abierto hasta que se hace click fuera del menú
   jQuery(".dropdown-menu li a").mouseover(function(e) {

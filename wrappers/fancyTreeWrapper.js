@@ -56,4 +56,36 @@ export default class FancyTreeWrapper {
       }
     });
   }
+
+  selectedElements() {
+    var tree = $("#" + this.idComponente)
+      .fancytree("getTree")
+      .getSelectedNodes();
+    var arraySelectedElements = [];
+    var y = 0;
+    var x = 0;
+
+    for (x = 0; x < tree.length; x++) {
+      if (tree[x].refKey == "1") {
+        arraySelectedElements[y] = tree[x].key;
+        y++;
+      }
+    }
+
+    return arraySelectedElements;
+  }
+
+  getLocalidadesSeleccionadas() {
+    var localidadesSeleccionadas = [];
+
+    $("#" + this.idComponente)
+      .fancytree("getRootNode")
+      .visit(function(node) {
+        if (!node.hasChildren() && node.selected === true) {
+          localidadesSeleccionadas.push(node);
+        }
+      });
+
+    return localidadesSeleccionadas;
+  }
 }

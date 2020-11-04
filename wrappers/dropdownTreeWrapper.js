@@ -1,4 +1,5 @@
 var $ = require("jquery");
+import "~/dropdown-tree/js/dropdowntree.js";
 
 export default class DropdownTreeWrapper {
   constructor(title, maxHeight, multiSelect, selectChildren, idComponente) {
@@ -78,5 +79,21 @@ export default class DropdownTreeWrapper {
     };
     $("#" + self.idComponente).empty();
     $("#" + self.idComponente).DropDownTree(options);
+  }
+
+  getTreeElementsChecked(element) {
+    var inputsSelected = element.find("input:checkbox:checked");
+    var arrayItemsSelected = [];
+
+    $.each(inputsSelected, function(key, elem) {
+      arrayItemsSelected.push(elem.value);
+    });
+
+    return arrayItemsSelected;
+  }
+
+  selectedElements() {
+    var self = this;
+    return this.getTreeElementsChecked($("#" + self.idComponente));
   }
 }

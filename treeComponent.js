@@ -8,4 +8,8 @@ export default class TreeComponent {
     var resultData = this.treeWrapper.mapTiposEnsayos(this.data);
     this.treeWrapper.createTree(resultData);
   }
+
+  selectedItems() {
+    return this.treeWrapper.selectedElements();
+  }
 }

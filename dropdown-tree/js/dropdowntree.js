@@ -234,17 +234,3 @@ function ChangeCheckedInputs(childrens, checked) {
     childrens.getElementsByTagName("input")[i].checked = checked;
   }
 }
-
-function GetTreeElementsChecked(element) {
-  var inputsSelected = element.find("input:checkbox:checked");
-  var inputsSelectedLength = inputsSelected.length;
-  var inputValuesConcatenated = "";
-  for (var i = 0; i < inputsSelectedLength; i++) {
-    inputValuesConcatenated += inputsSelected[i].value + ",";
-  }
-  inputValuesConcatenated = inputValuesConcatenated.substring(
-    0,
-    inputValuesConcatenated.length - 1
-  );
-  return inputValuesConcatenated;
-}
