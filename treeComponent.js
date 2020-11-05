@@ -6,7 +6,23 @@ export default class TreeComponent {
     this.data = _data;
   }
 
-  promiseCall() {}
+  promiseCall(empresa, anio, generacion) {
+    // Si es dinamico tiene que tener data y hacer un POST, sino hago un GET
+    if (
+      isNotNullOrUndefined(empresa) &&
+      isNotNullOrUndefined(anio) &&
+      isNotNullOrUndefined(generacion)
+    ) {
+      var data = {
+        empresa: empresa,
+        anio: anio,
+        generacion: generacion
+      };
+      this.ajaxCalls.ajaxPOST_JSON(this.url, data);
+    } else {
+      this.ajaxCalls.ajaxGET_JSON(this.url);
+    }
+  }
 
   initializeComponent() {
     var resultData = this.treeWrapper.mapTiposEnsayos(this.data);
@@ -15,5 +31,9 @@ export default class TreeComponent {
 
   selectedItems() {
     return this.treeWrapper.selectedElements();
+  }
+
+  isNotNullOrUndefined(variable) {
+    return variable != undefined || variable != null;
   }
 }
