@@ -3,7 +3,6 @@ var $ = require("jquery");
 export default class FancyTreeWrapper {
   constructor(_idComponente) {
     this.idComponente = _idComponente;
-    this.url = "/ComparativoVariedades/CargarFancyTree";
   }
 
   callTiposEnsayos(empresa, anio, generacion) {}

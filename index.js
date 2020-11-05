@@ -2,6 +2,7 @@
 var $ = require("jquery");
 var jQuery = require("jquery");
 import "jquery.fancytree";
+import AjaxCalls from "~/ajax-calls/ajax-calls.service.js";
 import DropdownTreeWrapper from "~/wrappers/dropdownTreeWrapper.js";
 import "./style.css";
 import FancyTreeWrapper from "~/wrappers/fancyTreeWrapper.js";
@@ -10,6 +11,9 @@ import "./style.css";
 
 // Json Data
 import jsonData from "./jsonDataDummy/tiposDeEnsayo.js";
+
+// Ajax calls
+var ajaxCalls = new AjaxCalls();
 
 // Wrappers
 var dropdownTreeWrapper = new DropdownTreeWrapper(
@@ -22,10 +26,20 @@ var dropdownTreeWrapper = new DropdownTreeWrapper(
 var fancyTreeWrapper = new FancyTreeWrapper("fancytree");
 
 // Tree Component
-var treeComponentDropdown = new TreeComponent(dropdownTreeWrapper, jsonData);
+var treeComponentDropdown = new TreeComponent(
+  dropdownTreeWrapper,
+  "/GestionEnsayosApi/ListTiposDeEnsayoExistentes",
+  ajaxCalls,
+  jsonData
+);
 treeComponentDropdown.initializeComponent();
 
-var treeComponentFancy = new TreeComponent(fancyTreeWrapper, jsonData);
+var treeComponentFancy = new TreeComponent(
+  fancyTreeWrapper,
+  "/ComparativoVariedades/CargarFancyTree",
+  ajaxCalls,
+  jsonData
+);
 treeComponentFancy.initializeComponent();
 
 $(document).ready(() => {
